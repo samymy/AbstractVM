@@ -1,0 +1,2 @@
+Line 1: Error: The operand is out of range of the type 'int16'
+Fix the errors above and try again
