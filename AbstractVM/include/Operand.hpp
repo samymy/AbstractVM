@@ -254,6 +254,9 @@ const IOperand *Operand<T>::getSqrt() const {
 
     try {
 
+        if (m_value < 0)
+            throw VMException("The operand can't be negative");
+
         result = OperandFactory::getInstance().createOperand(
                 m_type,
                 std::to_string(sqrt(m_value))
@@ -273,6 +276,9 @@ const IOperand *Operand<T>::getLog() const {
 
     try {
 
+        if (m_value <= 0)
+            throw VMException("The operand can't be negative or equal to zero");
+
         result = OperandFactory::getInstance().createOperand(
                 m_type,
                 std::to_string(log(m_value))
@@ -291,6 +297,9 @@ const IOperand *Operand<T>::getLog10() const {
     const IOperand *    result;
 
     try {
+
+        if (m_value <= 0)
+            throw VMException("The operand can't be negative or equal to zero");
 
         result = OperandFactory::getInstance().createOperand(
                 m_type,
