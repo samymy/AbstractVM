@@ -64,8 +64,10 @@ void	Lexer::tokenize(int argc, char** argv) {
         while (true) {
 
             std::getline(std::cin, line);
-            if (std::cin.eof())
+            if (feof(stdin)) {
+            	clearerr(stdin);
                 std::cin.clear();
+            }
             if ((istream_end_idx = line.find(";;")) != std::string::npos)
                 line = line.substr(0, istream_end_idx);
             lines.push_back(line);
